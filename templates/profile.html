@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>FoodAI Profile</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        🍜 FoodAI
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/chatbot">Chatbot</a></li>
+
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- PROFILE -->
+
+<section class="profile-dashboard">
+
+    <!-- LEFT -->
+
+    <div class="profile-left">
+
+        <div class="profile-card">
+
+            <div class="profile-image">
+
+                {{ user.avatar if user.avatar else '👩' }}
+
+            </div>
+
+            <h2>{{ username }}</h2>
+
+            <p class="profile-role">
+                Food Explorer 🍜
+            </p>
+
+            <p class="profile-bio">
+
+                {{ user.bio if user.bio else 'Food lover & AI explorer 🌿' }}
+
+            </p>
+
+            <a href="/edit_profile" class="edit-btn">
+                Edit Profile
+            </a>
+
+        </div>
+
+        <!-- STATS -->
+
+        <div class="stats-box">
+
+            <div class="stats-item">
+
+                <h3>{{ histories|length }}</h3>
+
+                <p>Total Search</p>
+
+            </div>
+
+            <div class="stats-item">
+
+                <h3>12</h3>
+
+                <p>Favorite Recipe</p>
+
+            </div>
+
+            <div class="stats-item">
+
+                <h3>AI</h3>
+
+                <p>Recommendation</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="profile-right">
+
+        <!-- WELCOME -->
+
+        <div class="welcome-card">
+
+            <h1>
+                Halo, {{ username }} 👋
+            </h1>
+
+            <p>
+                Selamat datang kembali di FoodAI Dashboard.
+            </p>
+
+        </div>
+
+        <!-- HISTORY -->
+
+        <div class="history-box">
+
+            <div class="section-title">
+
+                <h2>📜 Recent Search</h2>
+
+            </div>
+
+            <div class="history-grid">
+
+                {% for item in histories %}
+
+                <div class="history-modern-card">
+
+                    <h3>
+                        {{ item.ingredient }}
+                    </h3>
+
+                    <p>
+                        Bahan makanan yang pernah dicari
+                    </p>
+
+                    <a href="/">
+                        Cari Lagi
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- FAVORITE -->
+
+        <div class="favorite-box">
+
+            <div class="section-title">
+
+                <h2>❤️ Favorite Food</h2>
+
+            </div>
+
+            <div class="favorite-grid">
+
+                <div class="favorite-card">
+                    🍜 Mie Ayam
+                </div>
+
+                <div class="favorite-card">
+                    🍗 Ayam Geprek
+                </div>
+
+                <div class="favorite-card">
+                    🍚 Nasi Goreng
+                </div>
+
+                <div class="favorite-card">
+                    🌶️ Seblak
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

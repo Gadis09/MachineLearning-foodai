@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>FoodAI</title>
+
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        🍜 FoodAI
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/chatbot">Chatbot</a></li>
+
+        {% if username %}
+
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+        {% else %}
+
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+
+    {% endif %}
+
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Sistem Rekomendasi Resep Indonesia
+        </h1>
+
+        <p>
+            Cari rekomendasi resep berdasarkan bahan makanan
+        </p>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="ingredient"
+                value="{{ search_query }}"
+            >
+
+            <button type="submit">
+                Cari
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- HASIL -->
+
+<section class="hasil" id="hasil">
+
+    <h2>🍜 Rekomendasi Resep</h2>
+
+    <div class="card-container">
+
+        {% for item in recommendations %}
+
+        <div class="food-card">
+
+            <h3>
+                {{ item.title }}
+            </h3>
+
+            <p>
+                Klik untuk melihat detail resep
+            </p>
+
+            <a href="/detail/{{ item.id }}">
+                Lihat Detail
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+    {% if recommendations %}
+
+<script>
+
+window.onload = function(){
+
+    document
+    .getElementById('hasil')
+    .scrollIntoView({
+        behavior:'smooth'
+    });
+
+}
+
+</script>
+
+{% endif %}
+
+</body>
+</html>

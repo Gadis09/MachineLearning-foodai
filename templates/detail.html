@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Detail Resep</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        🍜 FoodAI
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/chatbot">Chatbot</a></li>
+
+        <li><a href="/profile">Profile</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- DETAIL -->
+
+<section class="detail-page">
+
+    {% if recipe %}
+
+    <div class="detail-card">
+
+        <h1>
+            {{ recipe.title }}
+        </h1>
+
+        <div class="detail-section">
+
+            <h2>🧂 Bahan-Bahan</h2>
+
+            <p>
+                {{ recipe.ingredients }}
+            </p>
+
+        </div>
+
+        <div class="detail-section">
+
+            <h2>👨‍🍳 Cara Memasak</h2>
+
+            <p>
+                {{ recipe.steps }}
+            </p>
+
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <h1>Resep tidak ditemukan</h1>
+
+    {% endif %}
+
+</section>
+
+</body>
+</html>

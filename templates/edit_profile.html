@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<nav>
+
+    <div class="logo">
+        🌿 FoodAI
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/profile">Profile</a></li>
+
+    </ul>
+
+</nav>
+
+<section class="auth-container">
+
+    <div class="auth-box">
+
+        <h1>
+            ✏️ Edit Profile
+        </h1>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value="{{ user.username }}"
+                required
+            >
+
+            <input
+                type="text"
+                name="avatar"
+                placeholder="Emoji Profile"
+                value="{{ user.avatar }}"
+            >
+
+            <textarea
+                name="bio"
+                placeholder="Bio"
+                class="bio-input"
+            >{{ user.bio }}</textarea>
+
+            <button>
+                Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+</html>

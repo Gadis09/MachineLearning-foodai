@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-box">
+
+        <h1>🍜 Register FoodAI</h1>
+
+        <form method="POST">
+
+            <input type="text" name="username" placeholder="Username">
+
+            <input type="email" name="email" placeholder="Email">
+
+            <input type="password" name="password" placeholder="Password">
+
+            <button>Register</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
